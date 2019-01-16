@@ -5,12 +5,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Oblasti {
-
-	public static ArrayList<Oblasti> oblasti = new ArrayList<>();
 	
-	public static ArrayList<String> filmovi = UcitajIUpisiPojmove.ucitajFajl("C:\\Users\\Slavko LapTop\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\Filmovi.txt");
-	public static ArrayList<String> reci = UcitajIUpisiPojmove.ucitajFajl("C:\\Users\\Slavko LapTop\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\Reci.txt");
-	
+	public static ArrayList<String> filmovi = 
+			UcitajIUpisiPojmove.ucitajFajl("C:\\Users\\Slavko LapTop\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\Filmovi.txt");
+	public static ArrayList<String> reci = 
+			UcitajIUpisiPojmove.ucitajFajl("C:\\Users\\Slavko LapTop\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\Reci.txt");
 	
 	public static void prikaziReciIzNekeOblasti (ArrayList<String> oblast) 
 	{
@@ -19,8 +18,8 @@ public class Oblasti {
 	}
 	/** Metoda vraca true ukoliko postoji pojam u listi oblast. Ako ne postoji vraca false.
 	 * 
-	 * @param oblast U koju listu (oblasti) da se pretrazuje pojam
-	 * @param pojam Pojam koji se pretrazuje
+	 * @param oblast - U koju listu (oblasti) da se pretrazuje pojam
+	 * @param pojam - Pojam koji se pretrazuje
 	 * @return vraca true ukoliko je pojam pronadjen
 	 */
 	private static boolean pretraziPojmove(ArrayList<String> oblast, String pojam) {
@@ -32,8 +31,8 @@ public class Oblasti {
 	}
 	/**Metoda trazi od korisnika da unese odredjeni pojam i oblast. Nakon unosa proverava se da li uneti pojam vec postoji u listi pojmova.
 	 * Ukoliko postoji ubacuje pojam u listu i upisuje u odgovarajuci fajl(fajl za tu oblast)
-	 * @param oblast U koju listu (oblasti) da se ubacuje pojam
-	 * @param putanjaFajla Fajl u koji se dodaje pojam
+	 * @param oblast - U koju listu (oblasti) da se ubacuje pojam
+	 * @param putanjaFajla - Fajl u koji se dodaje pojam
 	 * @throws IOException
 	 */
 	public static void ubaciNovuRec (ArrayList<String> oblast, String putanjaFajla) throws IOException {
@@ -47,6 +46,4 @@ public class Oblasti {
 		}
 		else System.out.println("Uneti pojam vec postoji u listi pojmova. Pojam nije ubacena!");
 	}
-	
-	
 }

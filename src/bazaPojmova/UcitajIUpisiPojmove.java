@@ -8,7 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class UcitajIUpisiPojmove {
+public class UcitajIUpisiPojmove 
+{
 
 	/**Ova metoda se koristi da bi u neku listu ubacili podatke iz nekog fajla
 	 * 
