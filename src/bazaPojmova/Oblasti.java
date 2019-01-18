@@ -6,12 +6,7 @@ import java.util.Scanner;
 
 public class Oblasti {
 	
-	public static ArrayList<String> filmovi = 
-			UcitajIUpisiPojmove.ucitajFajl("C:\\Users\\Slavko LapTop\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\Filmovi.txt");
-	public static ArrayList<String> reci = 
-			UcitajIUpisiPojmove.ucitajFajl("C:\\Users\\Slavko LapTop\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\Reci.txt");
-	
-	public static void prikaziReciIzNekeOblasti (ArrayList<String> oblast) 
+	public void prikaziReciIzNekeOblasti (ArrayList<String> oblast) 
 	{
 		for (String film : oblast) 
 			System.out.println(film);
@@ -22,7 +17,7 @@ public class Oblasti {
 	 * @param pojam - Pojam koji se pretrazuje
 	 * @return vraca true ukoliko je pojam pronadjen
 	 */
-	private static boolean pretraziPojmove(ArrayList<String> oblast, String pojam) {
+	private boolean pretraziPojmove(ArrayList<String> oblast, String pojam) {
 		for (String x : oblast) {
 			if (x.equals(pojam))
 				return true;
@@ -35,15 +30,17 @@ public class Oblasti {
 	 * @param putanjaFajla - Fajl u koji se dodaje pojam
 	 * @throws IOException
 	 */
-	public static void ubaciNovuRec (ArrayList<String> oblast, String putanjaFajla) throws IOException {
+	public void ubaciNovuRec (ArrayList<String> oblast, String putanjaFajla) throws IOException {
 		System.out.print("Unesite novi pojam: ");
 		String pojam = new Scanner(System.in).nextLine();
 		if (pretraziPojmove(oblast, pojam) == false) 
 		{
 			oblast.add(pojam);
-			System.out.println("Nov pojam je ubacena!");
-			UcitajIUpisiPojmove.upisiPojam(pojam, putanjaFajla);
+			System.out.println("Nov pojam je ubacen!");
+			UcitajIUpisiPojmove uup = new UcitajIUpisiPojmove();
+			uup.upisiPojam(pojam, putanjaFajla);
+			
 		}
-		else System.out.println("Uneti pojam vec postoji u listi pojmova. Pojam nije ubacena!");
+		else System.out.println("Uneti pojam vec postoji u listi pojmova. Pojam nije ubacen!");
 	}
 }

@@ -3,21 +3,28 @@ package demo;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import bazaPojmova.Oblasti;
+import bazaPojmova.UcitajIUpisiPojmove;
 
 public class Aplikacija {
 	
-	public static ArrayList<ArrayList<String>> oblasti = new ArrayList<>();
+	public static String Filmovifajl = "C:\\Users\\LapTop LenovoT510\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\Filmovi.txt";
+	public static String Recifajl = "C:\\Users\\LapTop LenovoT510\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\Reci.txt";
+	//public static ArrayList<ArrayList<String>> oblasti = new ArrayList<>();//
+	
+	UcitajIUpisiPojmove uup = new UcitajIUpisiPojmove();
+	public ArrayList<String> filmovi = 
+			uup.ucitajFajl(Filmovifajl);
+	public ArrayList<String> reci = 
+			uup.ucitajFajl(Recifajl);
 	
 	public static void main(String[] args) throws IOException {
 		
 		boolean pocetniMeni = true;
-		oblasti.add(Oblasti.filmovi);
-		oblasti.add(Oblasti.reci);
 		
 		System.out.println("Dobro dosli u igricu VESANJE!!");
 		System.out.println("==============================");
 		new Vesala().nacrtajKonopac();
+		Menu m = new Menu();
 		
 		do 
 		{
@@ -34,16 +41,16 @@ public class Aplikacija {
 			String odluka = unos.next();
 			
 			if (odluka.equals("1")) 
-				Menu.opcija1();
+				m.opcija1();
 			
 			else if (odluka.equals("2")) 
-				Menu.opcija2();
+				m.opcija2();
 			
 			else if (odluka.equals("3")) 
-				Menu.opcija3();
+				m.opcija3();
 			
 			else if (odluka.equals("4")) 
-				Menu.opcija4();
+				m.opcija4();
 				
 			else if (odluka.equals("0")) 
 				pocetniMeni = false;

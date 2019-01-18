@@ -16,7 +16,7 @@ public class UcitajIUpisiPojmove
 	 * @param putanjaFajla - fajl koji se ucitava
 	 * @return vraca se ceo niz Stringova, svaki red u fajlu predstavlja jedan element u nizu
 	 */
-	public static ArrayList<String> ucitajFajl (String putanjaFajla) 
+	public ArrayList<String> ucitajFajl (String putanjaFajla) 
 	{
 		Scanner in;
 		ArrayList<String> pojam = new ArrayList<>();
@@ -43,10 +43,10 @@ public class UcitajIUpisiPojmove
 	 * @param putanjaFajla - fajl (oblast) u koji uneti pojam treba da se sacuva
 	 * @throws IOException - proverava da li fajl postoji
 	 */
-	public static void upisiPojam (String pojam, String putanjaFajla) throws IOException 
+	public void upisiPojam (String pojam, String putanjaFajla) throws IOException 
 	{
 		try 
-		{ //ovde nema true jer hocemo da se iz pocetka napravi nov csv fajl
+		{ 
 			BufferedWriter upisi = new BufferedWriter(new FileWriter(putanjaFajla, true));
 			upisi.newLine();
 			upisi.write(pojam);
@@ -54,7 +54,7 @@ public class UcitajIUpisiPojmove
 		}
 		catch (FileNotFoundException e)
 		{
-			System.out.println("Greska! Fajl sa studentima nije pronadjen!");
+			System.out.println("Greska! Fajl nije pronadjen!");
 		}
 	}
 }

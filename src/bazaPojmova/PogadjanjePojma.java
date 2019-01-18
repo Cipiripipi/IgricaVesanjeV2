@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class PogadjanjePojma {
 
-	public static void pogodiPojam (String originalPojam) {
+	public void pogodiPojam (String originalPojam) {
 		int brojPokusaja = 0; //broji nam broj pokusaja, za svako uneto slovo ili pokusaj za uneti ceo pojam
 		int brojSlova = 0; //broj slova reci za pogadjanje. svaki put kada se pogodi slovo smanjujemo promenjivu jer nam sluzi kao okidac u while petlji
 							//kada brojac bude = 0 to znaci da su sva slova pogodjena i da treba da izadjemo iz petlje

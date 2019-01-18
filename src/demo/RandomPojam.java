@@ -9,7 +9,7 @@ public class RandomPojam {
 	 * @param pojmovi - Ime liste iz koje zelimo da pogadjamo rec
 	 * @return Metoda vraca random rec tipa String
 	 */
-	public static String izvuciRandomPojam (ArrayList<String> pojmovi) {
+	public String izvuciRandomPojam (ArrayList<String> pojmovi) {
 		int randomBroj = (int) (Math.random() * pojmovi.size());
 		String randomPojam = pojmovi.get(randomBroj);
 		return randomPojam;

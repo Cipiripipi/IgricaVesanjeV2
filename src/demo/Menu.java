@@ -7,8 +7,11 @@ import bazaPojmova.Oblasti;
 import bazaPojmova.PogadjanjePojma;
 
 public class Menu {
+	
+	Oblasti o = new Oblasti();
+	Aplikacija app = new Aplikacija();
 
-	public static void opcija1 () 
+	public void opcija1 () 
 	{
 		boolean pomocniMeni1 = true;
 		do 
@@ -25,14 +28,14 @@ public class Menu {
 			{
 				System.out.println("\nLista reci iz oblasti filmovi:");
 				System.out.println("==============================");
-				Oblasti.prikaziReciIzNekeOblasti(Oblasti.filmovi);
+				o.prikaziReciIzNekeOblasti(app.filmovi);
 				System.out.println("==============================");
 			}
 			else if (odluka1.equals("2")) 
 			{
 				System.out.println("\nLista reci iz oblasti reci:");
 				System.out.println("==============================");
-				Oblasti.prikaziReciIzNekeOblasti(Oblasti.reci);
+				o.prikaziReciIzNekeOblasti(app.reci);
 				System.out.println("==============================");
 			}
 			else if (odluka1.equals("0")) 
@@ -44,7 +47,7 @@ public class Menu {
 		while (pomocniMeni1 == true);
 	}
 	
-	public static void opcija2 () throws IOException 
+	public void opcija2 () throws IOException 
 	{
 		boolean pomocniMeni2 = true;
 		do 
@@ -57,9 +60,9 @@ public class Menu {
 			String odluka2 = new Scanner(System.in).next();
 			
 			if (odluka2.equals("1")) 
-				Oblasti.ubaciNovuRec(Oblasti.filmovi, "C:\\Users\\Slavko LapTop\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\Filmovi.txt");
+				o.ubaciNovuRec(app.filmovi, Aplikacija.Filmovifajl);
 			else if (odluka2.equals("2"))
-				Oblasti.ubaciNovuRec(Oblasti.reci, "C:\\Users\\Slavko LapTop\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\Reci.txt");
+				o.ubaciNovuRec(app.reci, Aplikacija.Recifajl);
 			else if (odluka2.equals("0"))
 				pomocniMeni2 = false;
 			else
@@ -68,7 +71,7 @@ public class Menu {
 		while (pomocniMeni2 == true);
 	}
 	
-	public static void opcija3 () 
+	public void opcija3 () 
 	{
 		boolean pomocniMeni3 = true;
 		do 
@@ -80,10 +83,12 @@ public class Menu {
 			System.out.print("Izaberite oblast iz koje zelite da pogadjate pojam: ");
 			String odluka3 = new Scanner(System.in).next();
 			
+			PogadjanjePojma pp = new PogadjanjePojma();
+			RandomPojam rp = new RandomPojam();
 			if (odluka3.equals("1")) 
-				PogadjanjePojma.pogodiPojam(RandomPojam.izvuciRandomPojam(Oblasti.filmovi));
+				pp.pogodiPojam(rp.izvuciRandomPojam(app.filmovi));
 			else if (odluka3.equals("2")) 
-				PogadjanjePojma.pogodiPojam(RandomPojam.izvuciRandomPojam(Oblasti.reci));
+				pp.pogodiPojam(rp.izvuciRandomPojam(app.reci));
 			else if (odluka3.equals("0"))
 				pomocniMeni3 = false;
 			else
@@ -92,7 +97,7 @@ public class Menu {
 		while (pomocniMeni3 == true);
 	}
 	
-	public static void opcija4 () 
+	public void opcija4 () 
 	{
 		
 	}
