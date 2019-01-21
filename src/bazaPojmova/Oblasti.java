@@ -1,15 +1,59 @@
 package bazaPojmova;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
+
+import demo.Aplikacija;
 
 public class Oblasti {
 	
+	private String nazivOblasti;
+	private ArrayList<String> lista = new ArrayList<>();
+	private String putanjaFajla;
+	
+	public Oblasti() {}
+	
+	public Oblasti (String nazivOblasti, ArrayList<String> lista, String putanjaFajla) {
+		this.nazivOblasti = nazivOblasti;
+		this.lista = lista;
+		this.putanjaFajla = putanjaFajla;
+	}
+	
+	public void prikaziOblasti() {
+		int brojOblasti = Aplikacija.oblasti.size();
+		System.out.println("==============================");
+		for (int i = 0; i < brojOblasti; i++)
+			System.out.println((i+1) + ") " + Aplikacija.oblasti.get(i).getNazivOblasti());
+	}
+	
+	public void ucitavanjeBaze() {
+		File original = new File("C:\\Users\\LapTop LenovoT510\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\");
+		File fajlovi [] = original.listFiles();
+		
+		for (int i = 0; i < fajlovi.length; i++) 
+		{
+			String trenutnaPutanjaFajla = (String) fajlovi[i].getAbsoluteFile().toString();
+			String trenutnoImeFajla = fajlovi[i].getName().substring(0, (int) fajlovi[i].getName().length()-4);
+			Oblasti oblast = new Oblasti(trenutnoImeFajla, new UcitajIUpisiPojmove().ucitajFajl(trenutnaPutanjaFajla), trenutnaPutanjaFajla);
+			Aplikacija.oblasti.add(oblast);
+		}
+	}
+	
 	public void prikaziReciIzNekeOblasti (ArrayList<String> oblast) 
 	{
-		for (String film : oblast) 
-			System.out.println(film);
+		Collections.sort(oblast);
+		for (String ob : oblast) 
+			System.out.println(ob);
+	}
+	
+	public void brisiPojmoveIzOblasti (ArrayList<String> ...oblast) {
+		for (int i = 0; i < oblast.length; i++) {
+			oblast[i].clear();
+			System.out.println("Lista pojmova " + oblast[i].getClass().getName() + " je obrisana!");//kako dobiti ime deklarisane promenjive
+		}
 	}
 	/** Metoda vraca true ukoliko postoji pojam u listi oblast. Ako ne postoji vraca false.
 	 * 
@@ -43,4 +87,26 @@ public class Oblasti {
 		}
 		else System.out.println("Uneti pojam vec postoji u listi pojmova. Pojam nije ubacen!");
 	}
+
+	public String getNazivOblasti() {
+		return nazivOblasti;
+	}
+	public void setNazivOblasti(String nazivOblasti) {
+		this.nazivOblasti = nazivOblasti;
+	}
+
+	public ArrayList<String> getLista() {
+		return lista;
+	}
+	public void setLista(ArrayList<String> lista) {
+		this.lista = lista;
+	}
+
+	public String getPutanjaFajla() {
+		return putanjaFajla;
+	}
+	public void setPutanjaFajla(String putanjaFajla) {
+		this.putanjaFajla = putanjaFajla;
+	}
+	
 }

@@ -3,28 +3,21 @@ package demo;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import bazaPojmova.UcitajIUpisiPojmove;
+
+import bazaPojmova.Oblasti;
 
 public class Aplikacija {
-	
-	public static String Filmovifajl = "C:\\Users\\LapTop LenovoT510\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\Filmovi.txt";
-	public static String Recifajl = "C:\\Users\\LapTop LenovoT510\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\Reci.txt";
-	//public static ArrayList<ArrayList<String>> oblasti = new ArrayList<>();//
-	
-	UcitajIUpisiPojmove uup = new UcitajIUpisiPojmove();
-	public ArrayList<String> filmovi = 
-			uup.ucitajFajl(Filmovifajl);
-	public ArrayList<String> reci = 
-			uup.ucitajFajl(Recifajl);
+
+	public static ArrayList<Oblasti> oblasti = new ArrayList<>();
 	
 	public static void main(String[] args) throws IOException {
 		
 		boolean pocetniMeni = true;
-		
 		System.out.println("Dobro dosli u igricu VESANJE!!");
 		System.out.println("==============================");
-		new Vesala().nacrtajKonopac();
 		Menu m = new Menu();
+		Oblasti ob = new Oblasti();
+		ob.ucitavanjeBaze();
 		
 		do 
 		{
@@ -59,5 +52,6 @@ public class Aplikacija {
 		}
 		while (pocetniMeni == true);
 		System.out.println("Hvala sto ste se igrali sa nama!");
+		
 	}
 }
