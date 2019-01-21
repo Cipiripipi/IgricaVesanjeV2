@@ -2,7 +2,6 @@ package demo;
 
 import java.io.IOException;
 import java.util.Scanner;
-
 import bazaPojmova.Oblasti;
 import bazaPojmova.PogadjanjePojma;
 import controlPanel.backupRestore;
@@ -40,7 +39,7 @@ public class Menu {
 			System.out.println("");
 			o.prikaziOblasti();
 			System.out.println("0) Povratak na predhodni meni\n");
-			int odluka2 = IzuzetakProvera.proveraUnosaBroja("Izaberite oblast za koju zelite da vidite listu pojmova: ");
+			int odluka2 = IzuzetakProvera.proveraUnosaBroja("Izaberite oblast za koju zelite da ubacite novi pojam: ");
 			odluka2--; //smanjujemo zato sto u prikazu prva oblast je oznacena sa 1 a u listi sa 0
 			
 			if (odluka2 >= 0 && odluka2 < Aplikacija.oblasti.size()) 
@@ -61,13 +60,16 @@ public class Menu {
 			System.out.println("");
 			o.prikaziOblasti();
 			System.out.println("0) Povratak na predhodni meni\n");
-			int odluka3 = IzuzetakProvera.proveraUnosaBroja("Izaberite oblast za koju zelite da vidite listu pojmova: ");
+			int odluka3 = IzuzetakProvera.proveraUnosaBroja("Izaberite oblast iz koje zelite da pogadjate pojam: ");
 			odluka3--; //smanjujemo zato sto u prikazu prva oblast je oznacena sa 1 a u listi sa 0
 			
 			PogadjanjePojma pp = new PogadjanjePojma();
 			RandomPojam rp = new RandomPojam();
-			if (odluka3 >= 0 && odluka3 < Aplikacija.oblasti.size()) 
-				pp.pogodiPojam(rp.izvuciRandomPojam(Aplikacija.oblasti.get(odluka3).getLista()));
+			if (odluka3 >= 0 && odluka3 < Aplikacija.oblasti.size())
+				if (Aplikacija.oblasti.get(odluka3).getLista().size() > 0)
+					pp.pogodiPojam(rp.izvuciRandomPojam(Aplikacija.oblasti.get(odluka3).getLista()));
+				else
+					System.out.println("U ovoj oblasti jos uvek nema ubacenih pojmova! Izaberite drugu oblast!");
 			else if (odluka3 == -1)
 				pomocniMeni3 = false;
 			else
@@ -84,6 +86,7 @@ public class Menu {
 			System.out.println("");
 			System.out.println("1) Uradi backup baze!");
 			System.out.println("2) Uradi restore baze!");
+			System.out.println("3) Ubaci novu oblast za pogadjanje");
 			System.out.println("0) Povratak na predhodni meni\n");
 			System.out.print("Izaberite opciju: ");
 			
@@ -94,6 +97,8 @@ public class Menu {
 				br.backupAndRestore("C:\\Users\\LapTop LenovoT510\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\", "C:\\Users\\LapTop LenovoT510\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\backup\\");
 			else if (odluka4.equals("2"))
 				br.backupAndRestore("C:\\Users\\LapTop LenovoT510\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\backup\\", "C:\\Users\\LapTop LenovoT510\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\");
+			else if (odluka4.equals("3"))
+				o.ubaciNovuOblast();
 			else if (odluka4.equals("0"))
 				pomocniMeni4 = false;
 			else
@@ -101,5 +106,4 @@ public class Menu {
 		}
 		while(pomocniMeni4 == true);
 	}
-	
 }
