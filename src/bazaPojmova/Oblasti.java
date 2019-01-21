@@ -72,6 +72,8 @@ public class Oblasti {
 		System.out.println("==============================");
 		for (int i = 0; i < brojOblasti; i++)
 			System.out.println((i+1) + ") " + Aplikacija.oblasti.get(i).getNazivOblasti());
+		if (brojOblasti == 0)
+			System.out.println("Jos uvek nema kreiranih oblasti! Prvo kreirajte oblast i ubacite reci!" );
 	}
 	
 	//u izradi

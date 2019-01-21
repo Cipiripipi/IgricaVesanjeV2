@@ -96,7 +96,11 @@ public class Menu {
 			if (odluka4.equals("1"))
 				br.backupAndRestore("C:\\Users\\LapTop LenovoT510\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\", "C:\\Users\\LapTop LenovoT510\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\backup\\");
 			else if (odluka4.equals("2"))
+			{
 				br.backupAndRestore("C:\\Users\\LapTop LenovoT510\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\backup\\", "C:\\Users\\LapTop LenovoT510\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\");
+				Aplikacija.oblasti.clear();
+				o.ucitavanjeBaze();
+			}
 			else if (odluka4.equals("3"))
 				o.ubaciNovuOblast();
 			else if (odluka4.equals("0"))
