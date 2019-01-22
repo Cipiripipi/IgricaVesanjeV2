@@ -14,6 +14,7 @@ public class PogadjanjePojma {
 		StringBuffer pojamSB = new StringBuffer().append(pojam);
 		String pojamPlus = pojam;
 		StringBuffer pojamPlusSB = new StringBuffer();
+		String pokusanaSlova = "";
 		
 		//pretvaramo slova u + da bi kasnije kada se pogodi slovo + zamenili pogodjenim slovom
 		String pattSlova = "[a-zA-Z]";
@@ -45,25 +46,23 @@ public class PogadjanjePojma {
 					System.out.println("Niste uneli slovo!");
 				else 
 				{
+					pokusanaSlova += slovo + " ";
 					brojPokusaja++;
 					for (int i = 0; i < pojam.length(); i++) 
 					{
-						boolean prikazi = false; //sluzi kao prekidac, da bi nam ispisivao novu izmenjenu rec(sa pogodjenim slovom) kada pogodimo slovo
-						if (pojamSB.charAt(i) == slovoM.charAt(0))
+						if (pojamSB.charAt(i) == slovoM.charAt(0) && pojamPlusSB.charAt(i) == '+')
 						{
 							pojamPlusSB.replace(i, i+1, slovoM);
-							prikazi = true;
 							brojSlova--;
 						}
-						if (pojamSB.charAt(i) == slovoV.charAt(0))
+						if (pojamSB.charAt(i) == slovoV.charAt(0) && pojamPlusSB.charAt(i) == '+')
 						{
 							pojamPlusSB.replace(i, i+1, slovoV);
-							prikazi = true;
 							brojSlova--;
 						}
-						if (prikazi == true)
-							System.out.println(pojamPlusSB);
 					}
+					System.out.println("Do sada ste pokusali sa slovima: " + pokusanaSlova);
+					System.out.println(pojamPlusSB);
 				}
 			}
 			
@@ -75,15 +74,11 @@ public class PogadjanjePojma {
 					System.out.println("Niste uneli rec!");
 				else 
 				{
-					if (unetaRec.equalsIgnoreCase(pojam) == true) {
-						brojPokusaja++;
+					brojPokusaja++;
+					if (unetaRec.equalsIgnoreCase(pojam) == true)
 						brojSlova = 0;
-					}
 					else 
-					{
 						System.out.println("Niste pogodili rec!");
-						brojPokusaja++;
-					}
 				}
 			}
 			else if (odluka.equals("0")) 
@@ -95,7 +90,6 @@ public class PogadjanjePojma {
 			else 
 				System.out.println("Uneli ste pogresnu opciju! Unesite ponovo!");
 		}
-		
 		while (brojSlova != 0);
 		if (nijePogodjenaRec == false)
 			System.out.println("Cestitamo!!! Pogodili ste rec iz " + brojPokusaja + " pokusaja");

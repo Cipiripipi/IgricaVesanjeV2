@@ -33,7 +33,7 @@ public class Oblasti {
 	}
 	
 	/**Metoda ucitava sve fajlove iz foldera i za svaki fajl pravi novu listu i u nju ubacuje pojmove koji se nalaze u tom fajlu.
-	 * Ime liste je isto kao ime fajla. Metoda radi za ne definisan broj fajlova u folderu.
+	 * Ime liste je isto kao ime fajla. Metoda radi za nedefinisan broj fajlova u folderu.
 	 */
 	public void ucitavanjeBaze() 
 	{
