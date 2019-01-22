@@ -87,6 +87,7 @@ public class Menu {
 			System.out.println("1) Uradi backup baze!");
 			System.out.println("2) Uradi restore baze!");
 			System.out.println("3) Ubaci novu oblast za pogadjanje");
+			System.out.println("4) Ucitaj novi fajl sa pojmovima");
 			System.out.println("0) Povratak na predhodni meni\n");
 			System.out.print("Izaberite opciju: ");
 			
@@ -94,15 +95,17 @@ public class Menu {
 			backupRestore br = new backupRestore();
 			
 			if (odluka4.equals("1"))
-				br.backupAndRestore("C:\\Users\\LapTop LenovoT510\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\", "C:\\Users\\LapTop LenovoT510\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\backup\\");
+				br.backupAndRestore("src/fajlovi/", "src/backup/");
 			else if (odluka4.equals("2"))
 			{
-				br.backupAndRestore("C:\\Users\\LapTop LenovoT510\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\backup\\", "C:\\Users\\LapTop LenovoT510\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\");
+				br.backupAndRestore("src/backup/", "src/fajlovi/");
 				Aplikacija.oblasti.clear();
 				o.ucitavanjeBaze();
 			}
 			else if (odluka4.equals("3"))
 				o.ubaciNovuOblast();
+			else if (odluka4.equals("4"))
+				o.ucitajFajl();
 			else if (odluka4.equals("0"))
 				pomocniMeni4 = false;
 			else

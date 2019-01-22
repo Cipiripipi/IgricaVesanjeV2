@@ -54,7 +54,7 @@ public class UcitajIUpisiPojmove
 		}
 		catch (FileNotFoundException e)
 		{
-			System.out.println("Greska! Fajl nije pronadjen!");
+			System.err.println("Greska! Fajl nije pronadjen!");
 		}
 	}
 }

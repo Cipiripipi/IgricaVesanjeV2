@@ -24,7 +24,7 @@ public class Aplikacija {
 			System.out.println("1) List pojmova po oblastima!");
 			System.out.println("2) Unos novog pojma!");
 			System.out.println("3) Pogadjajte pojam! ");
-			System.out.println("4) Control Panel! U IZRADI");
+			System.out.println("4) Control Panel!");
 			System.out.println("0) Izlaz iz programa");
 			System.out.println("");
 			System.out.print("Izaberite opciju: ");

@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import org.apache.commons.io.FileUtils;
+
 import demo.Aplikacija;
 
 public class Oblasti {
@@ -37,7 +42,7 @@ public class Oblasti {
 	 */
 	public void ucitavanjeBaze() 
 	{
-		File original = new File("C:\\Users\\LapTop LenovoT510\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\");
+		File original = new File("src/fajlovi/");
 		File fajlovi [] = original.listFiles();
 		
 		for (int i = 0; i < fajlovi.length; i++) 
@@ -47,6 +52,29 @@ public class Oblasti {
 			Oblasti oblast = new Oblasti(trenutnoImeFajla, new UcitajIUpisiPojmove().ucitajFajl(trenutnaPutanjaFajla), trenutnaPutanjaFajla);
 			Aplikacija.oblasti.add(oblast);
 		}
+	}
+	
+	public void ucitajFajl () throws IOException {
+		JFileChooser fc = new JFileChooser();
+		//fc.addChoosableFileFilter(new FileNameExtensionFilter("txt", "txt"));
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("txt", "txt");
+		fc.setFileFilter(filter);
+		fc.showOpenDialog(fc);
+		File fl = fc.getSelectedFile();
+		
+		if (fl != null) 
+		{
+			String putanjaFajla = fl.getAbsolutePath();
+			String imeFajla = fl.getName().substring(0, fl.getName().length()-4);
+			File fajlSta = new File(putanjaFajla);
+			File fajlGde = new File("src/fajlovi/");
+			FileUtils.copyFileToDirectory(fajlSta, fajlGde);
+			Oblasti oblast = new Oblasti(imeFajla, new UcitajIUpisiPojmove().ucitajFajl(putanjaFajla),putanjaFajla);
+			Aplikacija.oblasti.add(oblast);
+			System.out.println("Ubacili ste novu oblast!");
+		}
+		else System.out.println("Odustali ste od odabira fajla!");
+		
 	}
 	
 	/**Metoda prikazuje pojmove iz oblasti koju unesemo kao ulazni parametar.
@@ -91,7 +119,7 @@ public class Oblasti {
 	{
 		System.out.print("Unesite naziv nove oblasti: ");
 		String nazivNoveOblasti = new Scanner(System.in).next();
-		String putanjaFajla = "C:\\Users\\LapTop LenovoT510\\Desktop\\JAVA zadaci\\Eclipse\\IgricaVesanjeV2\\src\\fajlovi\\" + nazivNoveOblasti + ".txt";
+		String putanjaFajla = "src/fajlovi/" + nazivNoveOblasti + ".txt";
 		new BufferedWriter(new FileWriter(putanjaFajla)); //,true
 		Oblasti oblast = new Oblasti(nazivNoveOblasti, new UcitajIUpisiPojmove().ucitajFajl(putanjaFajla), putanjaFajla);
 		Aplikacija.oblasti.add(oblast);
